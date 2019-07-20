@@ -20,7 +20,7 @@ for text in validpages:
                 cols=row.findChildren(recursive=False)
                 cols=[ele.text.strip() for ele in cols]
                 writer.writerow(cols)
-                print(cols)
+#                print(cols)
 from random import shuffle
 
 with open('Weather.csv') as ip:
