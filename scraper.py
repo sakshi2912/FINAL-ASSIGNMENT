@@ -1,5 +1,6 @@
 #Collab with Triambaka Naresh
 
+#Scraping Data from multiple html files alsong with every header (Scraped data is stored in Weather.csv)
 from bs4 import BeautifulSoup
 import urllib.request
 import csv
@@ -21,6 +22,8 @@ for text in validpages:
                 cols=[ele.text.strip() for ele in cols]
                 writer.writerow(cols)
 #                print(cols)
+
+#Shuffling the dataset in order to include many citites in the sample (Being stored in shuffle.csv)
 from random import shuffle
 
 with open('Weather.csv') as ip:
@@ -32,7 +35,7 @@ with open('Weather.csv') as ip:
 with open('shuffled.csv','w') as out:
     out.writelines(lines)
 
-    
+#Removing Duplicates , in this case Header has been included 49 times , which has to be present only once (Storing the data in Weather.csv)    
 from more_itertools import unique_everseen
 with open('shuffled.csv','r') as f, open('Weather.csv','w') as out_file:
     out_file.writelines(unique_everseen(f))
